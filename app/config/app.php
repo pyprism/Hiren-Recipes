@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => 'fD3HTpyEs5q23tVuzgV1KiniHmQA972r',
+	'key' => 'A6Yrbh156CekuHWJwvm2WAKxxUFuAEgP',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -106,6 +106,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
 
 	),
 

@@ -15,3 +15,14 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('/x', function()
+{
+    return View::make('hiren.index');
+});
+
+Route::post('/x', function()
+{
+    $hiren = Input::get('URL') ;
+    dd($hiren);
+});
