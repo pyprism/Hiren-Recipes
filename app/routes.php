@@ -18,7 +18,7 @@ Route::get('/', function()
 
 Route::get('/x', function()
 {
-    return View::make('hiren.index');
+    return View::make('hiren.result')->with("username" , "Naima Anjum");
 });
 
 Route::post('/x', function()
@@ -27,5 +27,5 @@ Route::post('/x', function()
     dd($hiren);
 });
 
-Route::get("{shortened}",)
+//Route::get("{shortened}",)
 
