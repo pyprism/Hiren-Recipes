@@ -26,3 +26,6 @@ Route::post('/x', function()
     $hiren = Input::get('URL') ;
     dd($hiren);
 });
+
+Route::get("{shortened}",)
+
