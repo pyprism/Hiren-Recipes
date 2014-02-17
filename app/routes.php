@@ -11,19 +11,16 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
+Route::get('/', function () {
+    return View::make('hello');
 });
 
-Route::get('/x', function()
-{
-    return View::make('hiren.result')->with("username" , "Naima Anjum");
+Route::get('/x', function () {
+    return View::make('hiren.result')->with("username", "Naima Anjum");
 });
 
-Route::post('/x', function()
-{
-    $hiren = Input::get('URL') ;
+Route::post('/x', function () {
+    $hiren = Input::get('URL');
     dd($hiren);
 });
 
