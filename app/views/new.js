@@ -1,4 +1,4 @@
-window.fbAsyncInit = function() {
+  window.fbAsyncInit = function() {
   FB.init({
     appId      : '469790666476247',
     status     : true, // check login status
@@ -9,7 +9,7 @@ window.fbAsyncInit = function() {
   // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
   // for any authentication related change, such as login, logout or session refresh. This means that
   // whenever someone who was previously logged out tries to log in again, the correct case below 
-  // will be handled.
+  // will be handled. 
   FB.Event.subscribe('auth.authResponseChange', function(response) {
     // Here we specify what we do with the response anytime this event occurs. 
     if (response.status === 'connected') {
@@ -30,7 +30,7 @@ window.fbAsyncInit = function() {
       // In this case, the person is not logged into Facebook, so we call the login() 
       // function to prompt them to do so. Note that at this stage there is no indication
       // of whether they are logged into the app. If they aren't then they'll see the Login
-      // dialog right after they log in to Facebook.
+      // dialog right after they log in to Facebook. 
       // The same caveats as above apply to the FB.login() call here.
       FB.login();
     }
@@ -51,14 +51,6 @@ window.fbAsyncInit = function() {
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
-      //console.log('Good to see you, ' + response.name + '.');
-      var req = new XMLHttpRequest();
-      req.open("POST", "/", true);
-      req..onreadystatechange=function(){
-        if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-          console.log(response.name);
-        }
-    }
+      console.log('Good to see you, ' + response.name + '.');
     });
   }

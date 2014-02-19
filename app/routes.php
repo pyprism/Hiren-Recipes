@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return View::make('hello');
+    return View::make('login');
 });
 
 Route::get('/x', function () {
-    return View::make('hiren.result')->with("username", "Naima Anjum");
+    return View::make('hiren.result')->with("username", "xoxo");
 });
 
 Route::post('/x', function () {
