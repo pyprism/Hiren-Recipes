@@ -54,7 +54,7 @@ window.fbAsyncInit = function() {
       //console.log('Good to see you, ' + response.name + '.');
       var req = new XMLHttpRequest();
       req.open("POST", "/", true);
-      req..onreadystatechange=function(){
+      req.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200)
         {
           console.log(response.name);
