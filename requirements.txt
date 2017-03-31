@@ -4,8 +4,12 @@ Django==1.10.6
 django-appconf==1.0.2
 django-compressor==2.1.1
 django-debug-toolbar==1.7
+django-imagekit==4.0
 freezegun==0.3.8
+olefile==0.44
 packaging==16.8
+pilkit==2.0
+Pillow==4.0.0
 psycopg2==2.7.1
 pyparsing==2.2.0
 python-dateutil==2.6.0
