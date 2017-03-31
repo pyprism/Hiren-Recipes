@@ -236,3 +236,10 @@ LOGGING = {
         },
     }
 }
+
+# Login settings
+LOGIN_URL = '/'
+
+# django-debug-toolbar
+
+INTERNAL_IPS = ['127.0.0.1']
