@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "compressor",
     'recipe',
-    'debug_toolbar'
+    'debug_toolbar',
+    'imagekit'
 ]
 
 MIDDLEWARE = [
