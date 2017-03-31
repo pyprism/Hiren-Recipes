@@ -33,7 +33,7 @@ class Recipe(models.Model):
     meal = models.CharField(max_length=3, choices=meal_type, default='Oth')
     video = models.URLField(null=True, blank=True)
     ingredient = models.ForeignKey('Ingredient')
-    direction = models.TextField()
+    direction = models.ForeignKey('Direction')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -48,5 +48,14 @@ class Ingredient(models.Model):
 class CookedAt(models.Model):
     date = models.DateTimeField()
     recipe = models.ForeignKey('Recipe')
+    # rating = models.
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class Direction(models.Model):
+    # step = models.
+    # timer = models.
+    # description = models.
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
