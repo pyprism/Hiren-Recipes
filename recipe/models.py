@@ -1,9 +1,17 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 class Recipe(models.Model):
     name = models.CharField(max_length=800, unique=True)
+    image = models.ImageField(upload_to='hiren')
+    image_thumbnail = ImageSpecField(source='hiren',
+                                     processors=[ResizeToFill(363, 241)],
+                                     format='JPEG',
+                                     options={'quality': 60})
+
     preparation_time = models.FloatField(null=True, blank=True)
     cooking_time = models.FloatField(null=True, blank=True)
     cuisine_type = (
