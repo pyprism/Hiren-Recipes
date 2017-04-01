@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Recipe(models.Model):
@@ -48,14 +49,14 @@ class Ingredient(models.Model):
 class CookedAt(models.Model):
     date = models.DateTimeField()
     recipe = models.ForeignKey('Recipe')
-    # rating = models.
+    rating = models.IntegerField(validators=[MaxValueValidator(5), MinValueValidator(1)])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 
 class Direction(models.Model):
-    # step = models.
-    # timer = models.
-    # description = models.
+    step = models.IntegerField()
+    timer = models.TimeField()
+    description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
