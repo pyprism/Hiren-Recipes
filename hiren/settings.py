@@ -253,3 +253,7 @@ if not DEBUG:
         #  release based on the git info.
         'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
     }
+
+# media settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
