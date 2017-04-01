@@ -90,3 +90,6 @@ ENV/
 
 .idea/
 config.local.json
+
+media/CACHE/
+media/hiren/
