@@ -5,10 +5,10 @@ from django.contrib import messages
 
 
 def login(request):
-	if request.user.is_authenticated:
-		return redirect('recipes')
+    if request.user.is_authenticated:
+        return redirect('recipes')
     if request.method == "POST":
-    	username = request.POST.get('username')
+        username = request.POST.get('username')
         password = request.POST.get('password')
         user = auth.authenticate(username=username, password=password)
         if user:
