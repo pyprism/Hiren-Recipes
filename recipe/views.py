@@ -1,11 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import CookedAt, Direction, Recipe, Ingredient
+from .forms import CookedAtForm, DirectionForm, IngredientForm, RecipeForm
+from django.http import JsonResponse
 from django.contrib import auth
 from django.contrib import messages
+import logging
 
 
 def login(request):
+    """
+    Handle authentication
+    :param request:
+    :return:
+    """
     if request.user.is_authenticated:
         return redirect('recipes')
     if request.method == "POST":
@@ -24,11 +32,18 @@ def login(request):
 
 @login_required
 def form(request):
-    if request.method == 'POST':
-        frm = BookmarkForm(request.POST)
-        if frm.is_valid():
-            frm.save()
+    if request.method == 'POST' and request.content_type == 'application/json':
+        logger = logging.getLogger(__name__)
+        recipe_form = RecipeForm(request.POST)
+        direction_form = DirectionForm(request.POST)
+        ingredient_form = IngredientForm(request.POST)
+        if recipe_form.is_valid() and direction_form.is_valid() and ingredient_form.is_valid():
+            validated_recipe = recipe_form.save(commit=False)
+            validated_direction = direction_form.save(commit=False)
+            validated_ingredient = ingredient_form.save()
+            validated_recipe.ingredient = validated_ingredient
+
             return JsonResponse({'status': 'created'})
         else:
-            return JsonResponse({'error': frm.errors})
+            return JsonResponse({'error': 'Error on form validation!'})
     return render(request, 'form.html')
