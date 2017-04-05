@@ -41,8 +41,8 @@ class Recipe(models.Model):
     )
     meal = models.CharField(max_length=3, choices=meal_type, default='Oth')
     video = models.URLField(null=True, blank=True)
-    ingredient = models.ForeignKey('Ingredient')
-    direction = models.ForeignKey('Direction')
+    ingredient = models.ForeignKey('Ingredient', on_delete=models.CASCADE)
+    direction = models.ForeignKey('Direction', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -56,7 +56,7 @@ class Ingredient(models.Model):
 
 class CookedAt(models.Model):
     date = models.DateTimeField()
-    recipe = models.ForeignKey('Recipe')
+    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
     rating = models.IntegerField(validators=[MaxValueValidator(5), MinValueValidator(1)])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -65,6 +65,6 @@ class CookedAt(models.Model):
 class Direction(models.Model):
     step = models.IntegerField()
     timer = models.TimeField()
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
