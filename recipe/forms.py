@@ -5,7 +5,7 @@ from .models import Recipe, Ingredient, CookedAt, Direction
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
-        exclude = ('ingredient', 'direction')
+        exclude = ('ingredient',)
 
 
 class IngredientForm(ModelForm):
@@ -17,10 +17,10 @@ class IngredientForm(ModelForm):
 class CookedAtForm(ModelForm):
     class Meta:
         model = CookedAt
-        exclude = 'recipe'
+        exclude = ('recipe',)
 
 
 class DirectionForm(ModelForm):
     class Meta:
         model = Direction
-        fields = "__all__"
+        exclude = ('recipe', )
