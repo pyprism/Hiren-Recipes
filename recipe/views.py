@@ -15,14 +15,15 @@ def login(request):
     :return:
     """
     if request.user.is_authenticated:
-        return redirect('recipes')
+        return redirect('create')
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = auth.authenticate(username=username, password=password)
         if user:
             auth.login(request, user)
-            return redirect('recipes')
+            # return redirect('recipes')
+            return redirect('create')
         else:
             messages.error(request, 'Username/Password is not valid!')
             return redirect('/')
@@ -31,7 +32,7 @@ def login(request):
 
 
 @login_required
-def form(request):
+def create(request):
     if request.method == 'POST' and request.content_type == 'application/json':
         logger = logging.getLogger(__name__)
         recipe_form = RecipeForm(request.POST)
@@ -46,4 +47,4 @@ def form(request):
             return JsonResponse({'status': 'created'})
         else:
             return JsonResponse({'error': 'Error on form validation!'})
-    return render(request, 'form.html')
+    return render(request, 'add.html')
