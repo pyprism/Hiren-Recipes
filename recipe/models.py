@@ -33,9 +33,9 @@ class Recipe(models.Model):
         ('Mai', 'Main Course'),
         ('Sna', 'Snacks'),
         ('Bre', 'Breakfast'),
-        ('Sid', 'Side Dished'),
+        ('Sid', 'Side Dishes'),
         ('Des', 'Dessert'),
-        ('Cak', 'Caking and Baking'),
+        ('Cak', 'Cake and Baking'),
         ('Dri', 'Drinks'),
         ('Oth', 'Other')
     )
