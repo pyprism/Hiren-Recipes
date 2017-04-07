@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf import settings
 from recipe import views
+from django.contrib.auth import logout
 
 urlpatterns = [
-    url(r'^', views.login, name='login'),
+    url(r'^$', views.login, name='login'),
+    url(r'^create/', views.create, name='create'),
+    url(r'^logout/', logout, name='logout'),
 ]
 
 if settings.DEBUG:
