@@ -7,7 +7,7 @@ from imagekit.processors import ResizeToFill
 class Recipe(models.Model):
     name = models.CharField(max_length=800, unique=True)
     image = models.ImageField(upload_to='hiren')
-    image_thumbnail = ImageSpecField(source='hiren',
+    image_thumbnail = ImageSpecField(source='image',
                                      processors=[ResizeToFill(363, 241)],
                                      format='JPEG',
                                      options={'quality': 60})
