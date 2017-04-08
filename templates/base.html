@@ -72,7 +72,11 @@
 <script src="{% static '/js/froala_editor.pkgd.min.js' %}"></script>
 <script src="{% static '/js/masonry.pkgd.min.js' %}"></script>
 <script>
-$(function() { $('textarea').froalaEditor() });
+    $(function() { $('textarea').froalaEditor() });
+    $('.grid').masonry({
+        itemSelector: '.grid-item',
+        columnWidth: 200
+    });
 </script>
 {% endcompress %}
 </body>
