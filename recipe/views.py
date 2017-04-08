@@ -59,7 +59,7 @@ def create(request):
 
 @login_required
 def recipes(request):
-    recipes = Recipe.objects.all('-id')
+    recipes = Recipe.objects.order_by('-id')
     paginator = Paginator(recipes, 10)
     page = request.GET.get('page')
     try:
