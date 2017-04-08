@@ -33,18 +33,21 @@ def login(request):
 
 @login_required
 def create(request):
-    if request.method == 'POST' and request.content_type == 'application/json':
+    if request.method == 'POST':
         logger = logging.getLogger(__name__)
-        recipe_form = RecipeForm(request.POST)
-        direction_form = DirectionForm(request.POST)
-        ingredient_form = IngredientForm(request.POST)
-        if recipe_form.is_valid() and direction_form.is_valid() and ingredient_form.is_valid():
-            validated_recipe = recipe_form.save(commit=False)
-            validated_direction = direction_form.save(commit=False)
-            validated_ingredient = ingredient_form.save()
-            validated_recipe.ingredient = validated_ingredient
-
-            return JsonResponse({'status': 'created'})
+        recipe_form = RecipeForm(request.POST, request.FILES)
+        if recipe_form.is_valid():
+            # validated_recipe = recipe_form.save(commit=False)
+            # validated_direction = direction_form.save(commit=False)
+            # validated_ingredient = ingredient_form.save()
+            # validated_recipe.ingredient = validated_ingredient
+            recipe_form.save()
+            print("saved")
+            messages.info(request, 'Recipe Added')
+            return render(request, 'add.html')
         else:
-            return JsonResponse({'error': 'Error on form validation!'})
+            messages.error(request, recipe_form.errors)
+            print(recipe_form.errors)
+            print("errrorrr")
+            return render(request, 'add.html')
     return render(request, 'add.html')
