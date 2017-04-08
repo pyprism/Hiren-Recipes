@@ -17,13 +17,14 @@ from django.conf.urls import url, include
 from django.conf import settings
 from recipe import views
 from django.contrib.auth import logout
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^$', views.login, name='login'),
     url(r'^create/', views.create, name='create'),
     url(r'^recipes/', views.recipes, name='recipes'),
     url(r'^logout/', logout, name='logout'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
