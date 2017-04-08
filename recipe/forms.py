@@ -1,17 +1,11 @@
 from django.forms import ModelForm
-from .models import Recipe, Ingredient, CookedAt, Direction
+from .models import Recipe, CookedAt
 
 
 class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
-        exclude = ('ingredient',)
-
-
-class IngredientForm(ModelForm):
-    class Meta:
-        model = Ingredient
-        fields = '__all__'
+        fields = "__all__"
 
 
 class CookedAtForm(ModelForm):
@@ -19,8 +13,3 @@ class CookedAtForm(ModelForm):
         model = CookedAt
         exclude = ('recipe',)
 
-
-class DirectionForm(ModelForm):
-    class Meta:
-        model = Direction
-        exclude = ('recipe', )
