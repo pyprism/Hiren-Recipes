@@ -62,8 +62,6 @@ class CookedAt(models.Model):
 
 
 class Direction(models.Model):
-    step = models.IntegerField()
-    timer = models.TimeField()
     recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
