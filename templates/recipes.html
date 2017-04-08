@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offest-1">
+            <div class="grid">
+                {% for recipe in recipes %}
+                <div class="grid-item">
+                    <div class="card-container manual-flip">
+                        <div class="card">
+                            <div class="front">
+                                <div class="cover">
+                                    <img src="{{ recipe.image_thumbnail.url }}"/>
+                                </div>
+                                <div class="content">
+                                    <div class="main">
+                                        <a href="/recipes/{{recipe.id}}/" ><h3 class="name">{{ recipe.name }}</h3></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
