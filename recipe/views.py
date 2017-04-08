@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import CookedAt, Direction, Recipe, Ingredient
-from .forms import CookedAtForm, DirectionForm, IngredientForm, RecipeForm
+from .models import CookedAt, Recipe
+from .forms import CookedAtForm, RecipeForm
 from django.http import JsonResponse
 from django.contrib import auth
 from django.contrib import messages
