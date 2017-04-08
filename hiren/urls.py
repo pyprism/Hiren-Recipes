@@ -21,6 +21,7 @@ from django.contrib.auth import logout
 urlpatterns = [
     url(r'^$', views.login, name='login'),
     url(r'^create/', views.create, name='create'),
+    url(r'^recipes/', views.recipes, name='recipes'),
     url(r'^logout/', logout, name='logout'),
 ]
 
