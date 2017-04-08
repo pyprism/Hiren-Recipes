@@ -39,15 +39,8 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
 
-            <li class="active">
-                <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cutlery fa-stack-1x "></i></span> Recipes</a>
-            </li>
             <li>
-                <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> Shortcut</a>
-                <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                    <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link1</a></li>
-                    <li><a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span>link2</a></li>
-                </ul>
+                <a href="{% url 'recipes' %}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-cutlery fa-stack-1x "></i></span> Recipes</a>
             </li>
             <li>
                 <a href="{% url 'create' %}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-plus-circle fa-stack-1x "></i></span>Create New Recipe</a>
