@@ -5,12 +5,13 @@ from .forms import CookedAtForm, RecipeForm
 from django.http import JsonResponse
 from django.contrib import auth
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import logging
 
 
 def login(request):
     """
-    Handle authentication
+    Handles authentication
     :param request:
     :return:
     """
@@ -33,6 +34,11 @@ def login(request):
 
 @login_required
 def create(request):
+    """
+    Recipe creation
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         logger = logging.getLogger(__name__)
         recipe_form = RecipeForm(request.POST, request.FILES)
@@ -42,12 +48,25 @@ def create(request):
             # validated_ingredient = ingredient_form.save()
             # validated_recipe.ingredient = validated_ingredient
             recipe_form.save()
-            print("saved")
             messages.info(request, 'Recipe Added')
-            return render(request, 'add.html')
+            return redirect('create')
         else:
             messages.error(request, recipe_form.errors)
-            print(recipe_form.errors)
-            print("errrorrr")
+            logger.info(recipe_form.errors)
             return render(request, 'add.html')
     return render(request, 'add.html')
+
+
+@login_required
+def recipes(request):
+    recipes = Recipe.objects.all('-id')
+    paginator = Paginator(recipes, 10)
+    page = request.GET.get('page')
+    try:
+        yummy = paginator.page(page)
+    except PageNotAnInteger:
+        # If yummy is not an integer, deliver first page.
+        yummy = paginator.page(1)
+    except EmptyPage:
+        yummy = paginator.page(paginator.num_pages)
+    return render(request, 'recipes.html', {"recipes": yummy})
