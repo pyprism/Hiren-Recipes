@@ -13,7 +13,10 @@
     {% compress css %}
     <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static '/css/simple-sidebar.css' %}" rel="stylesheet">
-    <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet">{% endcompress %}
+    <link href="{% static '/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/froala_editor.pkgd.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/froala_style.min.css' %}" rel="stylesheet">
+    {% endcompress %}
 </head>
 <body>
 <nav class="navbar navbar-default no-margin navbar-fixed-top">
@@ -73,6 +76,10 @@
 <script src="{% static '/js/jquery-1.11.2.min.js' %}"></script>
 <script src="{% static '/js/bootstrap.min.js' %}"></script>
 <script src="{% static '/js/sidebar.js' %}"></script>
+<script src="{% static '/js/froala_editor.pkgd.min.js' %}"></script>
+<script>
+$(function() { $('textarea').froalaEditor() });
+</script>
 {% endcompress %}
 </body>
 </html>
