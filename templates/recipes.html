@@ -10,7 +10,7 @@
                         <div class="card">
                             <div class="front">
                                 <div class="cover">
-                                    <img src="{{ recipe.image_thumbnail.url }}"/>
+                                    <a href="/recipes/{{recipe.id}}/" ><img src="{{ recipe.image_thumbnail.url }}"/></a>
                                 </div>
                                 <div class="content">
                                     <div class="main">
@@ -25,5 +25,22 @@
             </div>
         </div>
     </div>
+    <ul class="pagination">
+            {% if recipes.has_previous %}
+            <li><a href="?page={{ recipes.previous_page_number }}">previous</a></li>
+            {% endif %}
+
+        <span class="current">
+
+        </span>
+
+            {% if recipes.has_next %}
+            <li><a href="?page={{ recipes.next_page_number }}">next</a></li>
+            {% endif %}
+            <br>
+            Page {{ recipes.number }} of {{ recipes.paginator.num_pages }}.
+        </ul>
+
 </div>
+
 {% endblock %}
