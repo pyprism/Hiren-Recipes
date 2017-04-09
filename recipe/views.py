@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import CookedAt, Recipe
 from .forms import CookedAtForm, RecipeForm
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.contrib import auth
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -29,7 +30,7 @@ def login(request):
             messages.error(request, 'Username/Password is not valid!')
             return redirect('/')
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'title': 'Login'})
 
 
 @login_required
@@ -54,13 +55,18 @@ def create(request):
             messages.error(request, recipe_form.errors)
             logger.info(recipe_form.errors)
             return render(request, 'add.html')
-    return render(request, 'add.html')
+    return render(request, 'add.html', {'title': 'Create New Recipe'})
 
 
 @login_required
 def recipes(request):
+    """
+    Return all recipe with pagination support
+    :param request:
+    :return:
+    """
     recipes = Recipe.objects.order_by('-id')
-    paginator = Paginator(recipes, 10)
+    paginator = Paginator(recipes, 8)
     page = request.GET.get('page')
     try:
         yummy = paginator.page(page)
@@ -69,4 +75,10 @@ def recipes(request):
         yummy = paginator.page(1)
     except EmptyPage:
         yummy = paginator.page(paginator.num_pages)
-    return render(request, 'recipes.html', {"recipes": yummy})
+    return render(request, 'recipes.html', {"recipes": yummy, 'title': 'Recipes'})
+
+
+@login_required
+def recipe(request, pk=None):
+    recipe = get_object_or_404(Recipe, pk=pk)
+    return render(request, 'recipe.html', {'recipe': recipe, 'title': recipe.name})
