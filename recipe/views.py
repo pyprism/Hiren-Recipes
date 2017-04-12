@@ -81,4 +81,7 @@ def recipes(request):
 @login_required
 def recipe(request, pk=None):
     recipe = get_object_or_404(Recipe, pk=pk)
-    return render(request, 'recipe.html', {'recipe': recipe, 'title': recipe.name})
+    if recipe:
+        counter = CookedAt.objects.filter(recipe=recipe).count()
+    print(counter)
+    return render(request, 'recipe.html', {'recipe': recipe, 'title': recipe.name, 'counter': counter})
