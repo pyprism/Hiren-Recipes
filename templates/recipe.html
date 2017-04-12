@@ -4,16 +4,33 @@
     <div class="row">
         <div class="col-md-2 col-md-offset-3">
             <img src="{{ recipe.image_thumbnail.url }}"/>
-            <h2>{{ recipe.name }}</h2>
+            <h2 class="text-nowrap">{{ recipe.name }}</h2>
         </div>
     </div>
 </div>
 <div class="col-md-2">
-        {% if recipe.preparation_time %}
-        Preparation Time: {{ recipe.preparation_time }}
-        Cooking Time: {{ recipe.cooking_time }}
-        {% endif %}
-        Cuisine Type:<p> {{ recipe.get_cuisine_display }}</p>
-        Meal Type: {{ recipe.get_meal_display }}
+    {% if recipe.preparation_time %}
+    Preparation Time: {{ recipe.preparation_time }}
+    Cooking Time: {{ recipe.cooking_time }}
+    {% endif %}
+    <p class="text-nowrap"> Cuisine Type: {{ recipe.get_cuisine_display }}</p>
+    <p class="text-nowrap">Meal Type: {{ recipe.get_meal_display }} </p>
+    <p class="text-nowrap">Number of times cooked: {{ counter }}</p>
+    {% if recipe.video %}
+    <a href="{{recipe.video}}" target="_blank"> Video </a>
+    {% endif %}
+    <hr>
+    {% if recipe.ingredient %}
+    <h3>Ingredients: </h3>
+    <p> {{ recipe.ingredient|safe }} </p>
+    {% endif %}
+    {% if recipe.direction %}
+    <h3>Direction: </h3>
+    <hr>
+    <p> {{ recipe.direction|safe }} </p>
+    <hr>
+    {% endif %}
+    <p class="text-nowrap"> <button class="btn btn-danger">Lets Cook!</button>
+    <button class="btn btn-block">Edit</button> </p>
 </div>
 {% endblock %}
