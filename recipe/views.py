@@ -94,4 +94,6 @@ def recipe(request, pk=None):
 @login_required
 def recipe_edit(request, pk=None):
     recipe = get_object_or_404(Recipe, pk=pk)
+    if request.method == 'POST':
+        RecipeForm(request.POST or None, request.FILES, instance=recipe)
     return render(request, 'recipe_edit.html', {'recipe': recipe, 'title': recipe.name})
