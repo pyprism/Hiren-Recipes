@@ -12,8 +12,8 @@ class Recipe(models.Model):
                                      format='JPEG',
                                      options={'quality': 60})
 
-    preparation_time = models.FloatField(null=True, blank=True)
-    cooking_time = models.FloatField(null=True, blank=True)
+    preparation_time = models.CharField(max_length=50, null=True, blank=True)
+    cooking_time = models.CharField(max_length=50, null=True, blank=True)
     cuisine_type = (
         ('Ame', 'American'),
         ('Chi', 'Chinese'),
