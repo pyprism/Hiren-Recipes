@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<form method="post" action="{% url 'recipe_edit' %}" class="form-horizontal" id="form" enctype="multipart/form-data"> {% csrf_token %}
+<form method="post" action="{% url 'recipe_edit' pk=recipe.id %}" class="form-horizontal" id="form" enctype="multipart/form-data"> {% csrf_token %}
         {% if messages %}
               <div class="alert alert-warning" role="alert">
                 <ul class="messages">
@@ -13,7 +13,7 @@
         <div class="form-group" >
             <label class="control-label col-sm-2" >Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" value="{recipe.name}" name="name" required placeholder="Name of the recipe"/>
+                <input type="text" class="form-control" value="{{recipe.name}}" name="name" required placeholder="Name of the recipe"/>
             </div>
         </div>
         <div class="form-group" >
