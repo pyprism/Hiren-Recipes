@@ -79,7 +79,19 @@ def recipes(request):
 
 @login_required
 def recipe(request, pk=None):
+    """
+    Serve recipe
+    :param request: 
+    :param pk: 
+    :return: 
+    """
     recipe = get_object_or_404(Recipe, pk=pk)
     if recipe:
         counter = CookedAt.objects.filter(recipe=recipe).count()
     return render(request, 'recipe.html', {'recipe': recipe, 'title': recipe.name, 'counter': counter})
+
+
+@login_required
+def recipe_edit(request, pk=None):
+    recipe = get_object_or_404(Recipe, pk=pk)
+    return render(request, 'recipe_edit.html', {'recipe': recipe, 'title': recipe.name})
