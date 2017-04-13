@@ -17,15 +17,14 @@ def login(request):
     :return:
     """
     if request.user.is_authenticated:
-        return redirect('create')
+        return redirect('recipes')
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = auth.authenticate(username=username, password=password)
         if user:
             auth.login(request, user)
-            # return redirect('recipes')
-            return redirect('create')
+            return redirect('recipes')
         else:
             messages.error(request, 'Username/Password is not valid!')
             return redirect('/')
@@ -83,5 +82,4 @@ def recipe(request, pk=None):
     recipe = get_object_or_404(Recipe, pk=pk)
     if recipe:
         counter = CookedAt.objects.filter(recipe=recipe).count()
-    print(counter)
     return render(request, 'recipe.html', {'recipe': recipe, 'title': recipe.name, 'counter': counter})
