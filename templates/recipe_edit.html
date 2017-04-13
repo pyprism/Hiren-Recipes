@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="{% url 'recipe_edit' %}" class="form-horizontal" id="form" enctype="multipart/form-data"> {% csrf_token %}
+        {% if messages %}
+              <div class="alert alert-warning" role="alert">
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+              </div>
+        {% endif %}
+        <div class="form-group" >
+            <label class="control-label col-sm-2" >Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" value="{recipe.name}" name="name" required placeholder="Name of the recipe"/>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2" >Recipe Image</label>
+            <div class="col-sm-10">
+                <input type="file" accept="image/*" name="image" required/>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2">Preparation Time</label>
+            <div class="col-sm-10">
+                <input type="time" class="form-control" name="preparation_time" placeholder="Optional preparation time" />
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2">Cooking Time</label>
+            <div class="col-sm-10">
+                <input type="time" class="form-control" name="cooking_time" placeholder="Optional cooking time" />
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2">Cuisine Type</label>
+            <div class="col-sm-10">
+                <select name="cuisine" required>
+                    <option value="Ame">American</option>
+                    <option value="Chi">Chinese</option>
+                    <option value="Ind">Indian</option>
+                    <option value="Ita">Italian</option>
+                    <option value="Fre">French</option>
+                    <option value="Gre">Greek</option>
+                    <option value="Med">Mediterranean</option>
+                    <option value="Mex">Mexican</option>
+                    <option value="Nor">Nordic</option>
+                    <option value="Tur">Turkish</option>
+                    <option value="Ban" selected>Bangladeshi</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2">Meal Type</label>
+            <div class="col-sm-10">
+                <select name="meal" required>
+                    <option value="Mai">Main Course</option>
+                    <option value="Sna">Snacks</option>
+                    <option value="Bre">Breakfast</option>
+                    <option value="Sid">Side Dishes</option>
+                    <option value="Des">Dessert</option>
+                    <option value="Cak">Cake and Baking</option>
+                    <option value="Dri">Drinks</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2">Video Url</label>
+            <div class="col-sm-10">
+                <input type="url" class="form-control" name="video" placeholder="Optional video URL" />
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2">Ingredient</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="ingredient" placeholder="List of Ingredient" ></textarea>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2">Direction</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="direction" placeholder="Direction" ></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default"><i class="fa fa-save" ></i> Create Recipe</button>
+            </div>
+        </div>
+</form>
+{% endblock %}
