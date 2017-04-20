@@ -5,7 +5,7 @@
               <div class="alert alert-warning" role="alert">
                 <ul class="messages">
                     {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                     {% endfor %}
                 </ul>
               </div>
@@ -52,6 +52,14 @@
                 <textarea class="form-control" name="direction" placeholder="Direction" >{{ recipe.direction|default_if_none:"" }}</textarea>
             </div>
         </div>
+        <div class="form-group" >
+            <label class="control-label col-sm-2">Tips</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" name="tips" placeholder="Optional tips" >{{ recipe.tips|default_if_none:"" }}</textarea>
+            </div>
+        </div>
+        <input type="hidden" name="meal" value="{{ recipe.meal }}">
+        <input type="hidden" name="cuisine" value="{{ recipe.cuisine }}">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default"><i class="fa fa-pencil-square-o" ></i> Update Recipe</button>
