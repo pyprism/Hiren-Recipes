@@ -99,8 +99,8 @@ def recipe_edit(request, pk=None):
         if form.is_valid():
             form.save()
             messages.info(request, "Recipe updated!")
-            return redirect('/recipes' + '/' + pk + '/')
+            return redirect('/recipes/' + pk + '/')
         else:
             messages.error(request, form.errors)
-            return redirect('/recipes' + '/' + pk + '/')
+            return redirect('/recipes/' + pk + '/')
     return render(request, 'recipe_edit.html', {'recipe': recipe, 'title': recipe.name})
