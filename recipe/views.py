@@ -93,6 +93,12 @@ def recipe(request, pk=None):
 
 @login_required
 def recipe_edit(request, pk=None):
+    """
+    Update recipe
+    :param request: 
+    :param pk: 
+    :return: 
+    """
     recipe = get_object_or_404(Recipe, pk=pk)
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES, instance=recipe)
@@ -104,3 +110,32 @@ def recipe_edit(request, pk=None):
             messages.error(request, form.errors)
             return redirect('/recipes/' + pk + '/')
     return render(request, 'recipe_edit.html', {'recipe': recipe, 'title': recipe.name})
+
+
+@login_required
+def cooked(request, pk=None):
+    pass
+
+
+@login_required
+def meal(request, meal=None):
+    """
+    Serve meal by type
+    :param request: 
+    :param meal: 
+    :return: 
+    """
+    hiren = Recipe.objects.filter(meal=meal)
+    return render(request, 'recipes.html', {"recipes": hiren, 'title': 'Recipes'})
+
+
+@login_required
+def cuisine(request, cuisine=None):
+    """
+    Serve cuisine by type
+    :param request: 
+    :param cuisine: 
+    :return: 
+    """
+    hiren = Recipe.objects.filter(meal=cuisine)
+    return render(request, 'recipes.html', {"recipes": hiren, 'title': 'Recipes'})
