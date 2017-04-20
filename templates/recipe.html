@@ -2,6 +2,15 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        {% if messages %}
+              <div class="alert alert-warning" role="alert">
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+              </div>
+        {% endif %}
         <div class="col-md-2 col-md-offset-3">
             <img src="{{ recipe.image_thumbnail.url }}"/>
             <h2 class="text-nowrap">{{ recipe.name }}</h2>
@@ -10,25 +19,29 @@
 </div>
 <div class="col-md-2">
     {% if recipe.preparation_time %}
-    Preparation Time: {{ recipe.preparation_time }}
-    Cooking Time: {{ recipe.cooking_time }}
+    <h4 class="text-nowrap">Preparation Time: {{ recipe.preparation_time }}</h4>
+    <h4 class="text-nowrap">Cooking Time: {{ recipe.cooking_time }}</h4>
     {% endif %}
-    <p class="text-nowrap"> Cuisine Type: {{ recipe.get_cuisine_display }}</p>
-    <p class="text-nowrap">Meal Type: {{ recipe.get_meal_display }} </p>
-    <p class="text-nowrap">Number of times cooked: {{ counter }}</p>
+    <h4 class="text-nowrap"> Cuisine Style: {{ recipe.get_cuisine_display }}</h4>
+    <h4 class="text-nowrap">Meal Type: {{ recipe.get_meal_display }} </h4>
+    <h4 class="text-nowrap">Number of times cooked: {{ counter }}</h4>
     {% if recipe.video %}
-    <a href="{{recipe.video}}" target="_blank"> Video </a>
+    <a href="{{recipe.video}}" target="_blank"><i class="fa fa-file-video-o" aria-hidden="true"></i> Video </a>
     {% endif %}
-    <hr>
+    <br/>
     {% if recipe.ingredient %}
-    <h3>Ingredients: </h3>
+    <h3 class="text-nowrap"><i class="fa fa-list-ul" aria-hidden="true"></i> Ingredients: </h3>
     <p> {{ recipe.ingredient|safe }} </p>
     {% endif %}
     {% if recipe.direction %}
-    <h3>Direction: </h3>
-    <hr>
+    <h3><i class="fa fa-arrow-down" aria-hidden="true"></i> Direction: </h3>
+    <br/>
     <p> {{ recipe.direction|safe }} </p>
-    <hr>
+    <br/>
+    {% endif %}
+    {% if recipe.tips %}
+    <h3 class="text-nowrap"><i class="fa fa-commenting" aria-hidden="true"></i> Tips: </h3>
+    <p> {{ recipe.tips|safe }} </p>
     {% endif %}
     <div class="btn-group">
         <a href="cook/" class="btn btn-block btn-info"><i class="fa fa-cutlery" aria-hidden="true"></i> Lets Cook!</a>
