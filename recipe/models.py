@@ -43,6 +43,7 @@ class Recipe(models.Model):
     video = models.URLField(null=True, blank=True)
     ingredient = models.TextField(null=True, blank=True)
     direction = models.TextField(null=True, blank=True)
+    tips = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
