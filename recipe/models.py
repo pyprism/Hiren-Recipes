@@ -8,9 +8,13 @@ class Recipe(models.Model):
     name = models.CharField(max_length=800, unique=True)
     image = models.ImageField(upload_to='hiren')
     image_thumbnail = ImageSpecField(source='image',
-                                     processors=[ResizeToFill(500, 250)],
+                                     processors=[ResizeToFill(500, 350)],
                                      format='JPEG',
                                      options={'quality': 90})
+    image_list = ImageSpecField(source='image',
+                                processors=[ResizeToFill(363, 241)],
+                                format='JPEG',
+                                options={'quality': 70})
 
     preparation_time = models.CharField(max_length=50, null=True, blank=True)
     cooking_time = models.CharField(max_length=50, null=True, blank=True)
