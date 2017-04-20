@@ -95,5 +95,12 @@ def recipe(request, pk=None):
 def recipe_edit(request, pk=None):
     recipe = get_object_or_404(Recipe, pk=pk)
     if request.method == 'POST':
-        RecipeForm(request.POST or None, request.FILES, instance=recipe)
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
+        if form.is_valid():
+            form.save()
+            messages.info(request, "Recipe updated!")
+            return redirect('/recipes' + '/' + pk + '/')
+        else:
+            messages.error(request, form.errors)
+            return redirect('/recipes' + '/' + pk + '/')
     return render(request, 'recipe_edit.html', {'recipe': recipe, 'title': recipe.name})
