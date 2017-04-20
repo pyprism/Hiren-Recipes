@@ -22,8 +22,8 @@
     <h4 class="text-nowrap">Preparation Time: {{ recipe.preparation_time }}</h4>
     <h4 class="text-nowrap">Cooking Time: {{ recipe.cooking_time }}</h4>
     {% endif %}
-    <h4 class="text-nowrap"> Cuisine Style: {{ recipe.get_cuisine_display }}</h4>
-    <h4 class="text-nowrap">Meal Type: {{ recipe.get_meal_display }} </h4>
+    <h4 class="text-nowrap"> Cuisine Style: <a href="/cuisine/{{ recipe.cuisine }}/">{{ recipe.get_cuisine_display }}</a></h4>
+    <h4 class="text-nowrap">Meal Type: <a href="/meal/{{ recipe.meal }}/">{{ recipe.get_meal_display }} </a></h4>
     <h4 class="text-nowrap">Number of times cooked: {{ counter }}</h4>
     {% if recipe.video %}
     <a href="{{recipe.video}}" target="_blank"><i class="fa fa-file-video-o" aria-hidden="true"></i> Video </a>
