@@ -118,6 +118,11 @@ def cooked(request, pk=None):
 
 
 @login_required
+def delete(request, pk=None):
+    pass
+
+
+@login_required
 def meal(request, meal=None):
     """
     Serve meal by type
