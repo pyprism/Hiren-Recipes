@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^$', views.login, name='login'),
     url(r'^create/', views.create, name='create'),
+    url(r'^cuisine/(?P<cuisine>[^\.]+)/', views.cuisine),
+    url(r'^meal/(?P<meal>[^\.]+)/', views.meal),
     url(r"^recipes/(?P<pk>[^\.]+)/edit/$", views.recipe_edit, name='recipe_edit'),
     url(r"^recipes/(?P<pk>[^\.]+)/$", views.recipe),
     url(r'^recipes/', views.recipes, name='recipes'),
