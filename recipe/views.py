@@ -43,10 +43,6 @@ def create(request):
         logger = logging.getLogger(__name__)
         recipe_form = RecipeForm(request.POST, request.FILES)
         if recipe_form.is_valid():
-            # validated_recipe = recipe_form.save(commit=False)
-            # validated_direction = direction_form.save(commit=False)
-            # validated_ingredient = ingredient_form.save()
-            # validated_recipe.ingredient = validated_ingredient
             recipe_form.save()
             messages.info(request, 'Recipe Added')
             return redirect('create')
@@ -105,25 +101,42 @@ def recipe_edit(request, pk=None):
         if form.is_valid():
             form.save()
             messages.info(request, "Recipe updated!")
-            return redirect('/recipes/' + pk + '/')
         else:
             messages.error(request, form.errors)
-            return redirect('/recipes/' + pk + '/')
+        return redirect('/recipes/' + pk + '/')
     return render(request, 'recipe_edit.html', {'recipe': recipe, 'title': recipe.name})
 
 
 @login_required
 def cooked(request, pk=None):
-    pass
+    """
+    Add cooking date with rating
+    :param request: 
+    :param pk: 
+    :return: 
+    """
+    if request.method == 'POST':
+        form = CookedAtForm(request.POST)
+        if form.is_valid():
+            validated_form = form.save(commit=False)
+            recipe = Recipe.objects.get(pk=pk)
+            validated_form.recipe = recipe
+            validated_form.save()
+            messages.info(request, "Cooking date added!")
+        else:
+            messages.error(request, form.errors)
+        return redirect('/recipes/' + pk + '/cook/')
+    return render(request, 'cookedAt.html', {'title': 'Cooked At', 'recipe_id': pk})
 
 
 @login_required
 def delete(request, pk=None):
-    # try:
-    #     Recipe.objects.filter(pk=pk).delete()
-    #     messages.info(request, "Recipe Deleted!")
-    # except Exception as e:
-    #     messages.error(request, e.message)
+    """
+    Delete recipe
+    :param request: 
+    :param pk: 
+    :return: 
+    """
     Recipe.objects.filter(pk=pk).delete()
     messages.info(request, "Recipe Deleted!")
     return redirect(recipes)
