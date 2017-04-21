@@ -82,9 +82,10 @@ def recipe(request, pk=None):
     :return: 
     """
     recipe = get_object_or_404(Recipe, pk=pk)
-    if recipe:
-        counter = CookedAt.objects.filter(recipe=recipe).count()
-    return render(request, 'recipe.html', {'recipe': recipe, 'title': recipe.name, 'counter': counter})
+    counter = CookedAt.objects.filter(recipe=recipe).count()
+    history = CookedAt.objects.filter(pk=pk)
+    return render(request, 'recipe.html', {'recipe': recipe, 'title': recipe.name,
+                                           'counter': counter, 'history': history})
 
 
 @login_required
@@ -126,7 +127,7 @@ def cooked(request, pk=None):
         else:
             messages.error(request, form.errors)
         return redirect('/recipes/' + pk + '/cook/')
-    return render(request, 'cookedAt.html', {'title': 'Cooked At', 'recipe_id': pk})
+    return render(request, 'cookedAt.html', {'title': 'Cooking Time and Rating', 'recipe_id': pk})
 
 
 @login_required
@@ -162,5 +163,5 @@ def cuisine(request, cuisine=None):
     :param cuisine: 
     :return: 
     """
-    hiren = Recipe.objects.filter(meal=cuisine)  # get cuisine full name
+    hiren = Recipe.objects.filter(meal=cuisine)
     return render(request, 'recipes.html', {"recipes": hiren, 'title': 'Recipes'})
