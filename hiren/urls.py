@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^meal/(?P<meal>[^\.]+)/', views.meal),
     url(r"^recipes/(?P<pk>[^\.]+)/edit/$", views.recipe_edit, name='recipe_edit'),
     url(r"^recipes/(?P<pk>[^\.]+)/delete/$", views.delete),
+    url(r"^recipes/(?P<pk>[^\.]+)/cook/$", views.cooked, name='cooked_at'),
     url(r"^recipes/(?P<pk>[^\.]+)/$", views.recipe),
     url(r'^recipes/', views.recipes, name='recipes'),
     url(r'^logout/', logout, name='logout'),
