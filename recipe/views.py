@@ -119,7 +119,14 @@ def cooked(request, pk=None):
 
 @login_required
 def delete(request, pk=None):
-    pass
+    # try:
+    #     Recipe.objects.filter(pk=pk).delete()
+    #     messages.info(request, "Recipe Deleted!")
+    # except Exception as e:
+    #     messages.error(request, e.message)
+    Recipe.objects.filter(pk=pk).delete()
+    messages.info(request, "Recipe Deleted!")
+    return redirect(recipes)
 
 
 @login_required
@@ -142,5 +149,5 @@ def cuisine(request, cuisine=None):
     :param cuisine: 
     :return: 
     """
-    hiren = Recipe.objects.filter(meal=cuisine)
+    hiren = Recipe.objects.filter(meal=cuisine)  # get cuisine full name
     return render(request, 'recipes.html', {"recipes": hiren, 'title': 'Recipes'})
