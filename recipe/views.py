@@ -165,3 +165,8 @@ def cuisine(request, cuisine=None):
     """
     hiren = Recipe.objects.filter(meal=cuisine)
     return render(request, 'recipes.html', {"recipes": hiren, 'title': 'Recipes'})
+
+
+@login_required
+def recent(request):
+    history = CookedAt.objects.all()
