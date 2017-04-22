@@ -29,6 +29,7 @@ urlpatterns = [
     url(r"^recipes/(?P<pk>[^\.]+)/cook/$", views.cooked, name='cooked_at'),
     url(r"^recipes/(?P<pk>[^\.]+)/$", views.recipe),
     url(r'^recipes/', views.recipes, name='recipes'),
+    url(r'^recent/', views.recent, name='recent'),
     url(r'^logout/', logout, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
