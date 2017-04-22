@@ -163,10 +163,11 @@ def cuisine(request, cuisine=None):
     :param cuisine: 
     :return: 
     """
-    hiren = Recipe.objects.filter(meal=cuisine)
+    hiren = Recipe.objects.filter(cuisine=cuisine)
     return render(request, 'recipes.html', {"recipes": hiren, 'title': 'Recipes'})
 
 
 @login_required
 def recent(request):
-    history = CookedAt.objects.all()
+    history = CookedAt.objects.distinct().order_by('-id')[:20]
+    return render(request, 'recent.html', {"recipes": history, 'title': 'Recently Cooked'})
