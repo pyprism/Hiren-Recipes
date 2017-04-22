@@ -270,7 +270,7 @@ CACHEOPS = {
     # Automatically cache any User.objects.get() calls for 15 minutes
     # This includes request.user or post.author access,
     # where Post.author is a foreign key to auth.User
-    'auth.user': {'ops': 'all', 'timeout': 60*15},
-    '*.*': {'ops': 'all', 'timeout': 60*60},  # enable cache for all model for 1 hour
+    'auth.user': {'ops': 'all', 'timeout': 60*60*24*30},
+    '*.*': {'ops': 'all', 'timeout': 60*60*24*30},  # enable cache for all model for 1 month
 }
 
