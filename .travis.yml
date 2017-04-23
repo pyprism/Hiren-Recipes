@@ -18,6 +18,7 @@ before_script:
   - psql -c "CREATE DATABASE travisci;" -U postgres
 
 script:
+  - python manage.py compress
   - python manage.py test
   - coverage run --source=recipe manage.py test recipe
 
