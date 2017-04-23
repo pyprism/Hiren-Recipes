@@ -60,3 +60,19 @@ class LoginViewTest(TestCase):
     def test_login_url_resolves_to_login_view(self):
         found = resolve('/')
         self.assertEqual(found.func, views.login)
+
+
+class CreateViewTest(TransactionTestCase):
+    """
+    Test for create view
+    """
+    reset_sequences = True
+
+    def setUp(self):
+        self.c = Client()
+        self.user = User.objects.create_user('hiren', 'a@b.com', 'bunny')
+
+    def test_login_create_resolves_to_create_view(self):
+        # self.c.login(username='hiren', password='bunny')
+        found = resolve('/create/')
+        self.assertEqual(found.func, views.create)
