@@ -43,3 +43,7 @@ class LoginViewTest(TransactionTestCase):
         self.c.login(username='hiren', password='bunny')
         response = self.c.get('/', follow=True)
         self.assertRedirects(response, '/recipes/')
+
+    def test_redirect_for_unauthenticated_user_works(self):
+        response = self.c.get('/recipes/')
+        self.assertRedirects(response, '/?next=/recipes/')
