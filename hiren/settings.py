@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'recipe',
     'debug_toolbar',
     'imagekit',
-    'cacheops'
+    # 'cacheops'
 ]
 
 MIDDLEWARE = [
@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'querycount.middleware.QueryCountMiddleware'
 ]
 
 ROOT_URLCONF = 'hiren.urls'
@@ -274,3 +275,8 @@ CACHEOPS = {
     '*.*': {'ops': 'all', 'timeout': 60*60*24*30},  # enable cache for all model for 1 month
 }
 
+# querycount
+
+QUERYCOUNT = {
+    'DISPLAY_DUPLICATES': 5,
+}
