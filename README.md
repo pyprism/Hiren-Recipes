@@ -1,2 +1,2 @@
-# Hiren-Recipes
+# Hiren-Recipes [![Build Status](https://travis-ci.org/pyprism/Hiren-Recipes.svg?branch=master)](https://travis-ci.org/pyprism/Hiren-Recipes) [![Coverage Status](https://coveralls.io/repos/github/pyprism/Hiren-Recipes/badge.svg?branch=master)](https://coveralls.io/github/pyprism/Hiren-Recipes?branch=master) [![Requirements Status](https://requires.io/github/pyprism/Hiren-Recipes/requirements.svg?branch=master)](https://requires.io/github/pyprism/Hiren-Recipes/requirements/?branch=master) 
 This webapp is all about recipes :hamburger: and cooking habit tracking ! It is slighty inspired by [GNOME Recipes](https://github.com/GNOME/recipes)
