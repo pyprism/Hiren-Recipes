@@ -38,3 +38,8 @@ class LoginViewTest(TransactionTestCase):
     def test_view_returns_correct_template(self):
         response = self.c.get('/')
         self.assertTemplateUsed(response, 'login.html')
+
+    def test_authenticated_user_redirect_to_the_app(self):
+        self.c.login(username='hiren', password='bunny')
+        response = self.c.get('/', follow=True)
+        self.assertRedirects(response, '/recipes/')
