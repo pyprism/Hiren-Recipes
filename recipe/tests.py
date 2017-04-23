@@ -57,3 +57,7 @@ class LoginViewTest(TransactionTestCase):
         message = list(response.context.get('messages'))[0]
         self.assertEqual(message.message, 'Username/Password is not valid!')
         self.assertEqual(message.tags, 'error')
+
+    def test_login_url_resolves_to_login_view(self):
+        found = resolve('/')
+        self.assertEqual(found.func, views.login)
