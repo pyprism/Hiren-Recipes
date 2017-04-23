@@ -25,11 +25,10 @@ class ModelTest(TransactionTestCase):
         self.assertEqual(recipes[0].name, 'test')
 
 
-class LoginViewTest(TransactionTestCase):
+class LoginViewTest(TestCase):
     """
     Test for index/login view
     """
-    reset_sequences = True
 
     def setUp(self):
         self.c = Client()
