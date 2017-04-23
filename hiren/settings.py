@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'recipe',
     'debug_toolbar',
     'imagekit',
-    'cacheops'
+    #'cacheops'
 ]
 
 MIDDLEWARE = [
