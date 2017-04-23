@@ -47,3 +47,13 @@ class LoginViewTest(TransactionTestCase):
     def test_redirect_for_unauthenticated_user_works(self):
         response = self.c.get('/recipes/')
         self.assertRedirects(response, '/?next=/recipes/')
+
+    def test_redirect_works_for_bad_auth(self):
+        response = self.c.post('/', {'username': 'hiren', 'password': 'bad pass'}, follow=True)
+        self.assertRedirects(response, '/')
+
+    def test_message_works_for_bad_auth(self):
+        response = self.c.post('/', {'username': 'hiren', 'password': 'bad pass'}, follow=True)
+        message = list(response.context.get('messages'))[0]
+        self.assertEqual(message.message, 'Username/Password is not valid!')
+        self.assertEqual(message.tags, 'error')
