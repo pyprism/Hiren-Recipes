@@ -22,5 +22,19 @@ class ModelTest(TransactionTestCase):
         self.assertEqual(CookedAt.objects.count(), 1)
 
         recipes = Recipe.objects.all()
-        print(recipes[0].image)
         self.assertEqual(recipes[0].name, 'test')
+
+
+class LoginViewTest(TransactionTestCase):
+    """
+    Test for index/login view
+    """
+    reset_sequences = True
+
+    def setUp(self):
+        self.c = Client()
+        self.user = User.objects.create_user('hiren', 'a@b.com', 'bunny')
+
+    def test_view_returns_correct_template(self):
+        response = self.c.get('/')
+        self.assertTemplateUsed(response, 'login.html')
