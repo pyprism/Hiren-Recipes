@@ -76,3 +76,12 @@ class CreateViewTest(TransactionTestCase):
         # self.c.login(username='hiren', password='bunny')
         found = resolve('/create/')
         self.assertEqual(found.func, views.create)
+
+    def test_view_returns_correct_template(self):
+        self.c.login(username='hiren', password='bunny')
+        response = self.c.get('/create/')
+        self.assertTemplateUsed(response, 'add.html')
+
+    def test_form_works(self):
+        self.c.login(username='hiren', password='bunny')
+        response = self.c.post('/create/', data={'name': 'test', 'image': SimpleUploadedFile('image.jpg', b'xyz')})
