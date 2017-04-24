@@ -280,3 +280,11 @@ CACHEOPS = {
 QUERYCOUNT = {
     'DISPLAY_DUPLICATES': 5,
 }
+
+# sentry
+RAVEN_CONFIG = {
+    'dsn': JSON_DATA['sentry_dsn'],
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
