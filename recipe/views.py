@@ -49,7 +49,7 @@ def create(request):
         else:
             messages.error(request, recipe_form.errors)
             logger.info(recipe_form.errors)
-            return render(request, 'add.html')
+            return redirect('create')
     return render(request, 'add.html', {'title': 'Create New Recipe'})
 
 
