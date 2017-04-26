@@ -47,12 +47,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "compressor",
     'recipe',
     'debug_toolbar',
     'imagekit',
-    #'cacheops'
+    "compressor",
 ]
+
+if DEBUG is False:
+    INSTALLED_APPS += [
+        'raven.contrib.django.raven_compat',
+        'cacheops'
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
