@@ -21,7 +21,6 @@ env:
  - DEBUG=True
 
 script:
-  - python manage.py compress
   - python manage.py test
   - coverage run --source=recipe manage.py test recipe
 
