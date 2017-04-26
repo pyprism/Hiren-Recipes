@@ -17,6 +17,9 @@ install:
 before_script:
   - psql -c "CREATE DATABASE travisci;" -U postgres
 
+env:
+ - DEBUG=True
+
 script:
   - python manage.py compress
   - python manage.py test
