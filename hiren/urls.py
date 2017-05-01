@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf import settings
 from recipe import views
-from django.contrib.auth import logout
+from django.contrib.auth.views import logout
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -30,7 +30,7 @@ urlpatterns = [
     url(r"^recipes/(?P<pk>[^\.]+)/$", views.recipe),
     url(r'^recipes/', views.recipes, name='recipes'),
     url(r'^recent/', views.recent, name='recent'),
-    url(r'^logout/', logout, name='logout'),
+    url(r'^logout/', logout, {'next_page': '/'}, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
