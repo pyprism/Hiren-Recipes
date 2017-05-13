@@ -7,7 +7,7 @@ django-compressor==2.1.1
 django-debug-toolbar==1.8
 django-imagekit==4.0
 django-querycount==0.6.0
-freezegun==0.3.8
+freezegun==0.3.9
 funcy==1.7.3
 olefile==0.44
 packaging==16.8
