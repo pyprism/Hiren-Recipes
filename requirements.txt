@@ -15,7 +15,7 @@ pilkit==2.0
 Pillow==4.1.1
 psycopg2==2.7.1
 pyparsing==2.2.0
-python-dateutil==2.6.0
+python-dateutil==2.6.1
 pytz==2017.2
 raven==6.1.0
 rcssmin==1.0.6
