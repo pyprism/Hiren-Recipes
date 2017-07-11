@@ -12,7 +12,7 @@ funcy==1.8
 olefile==0.44
 packaging==16.8
 pilkit==2.0
-Pillow==4.1.1
+Pillow==4.2.1
 psycopg2==2.7.1
 pyparsing==2.2.0
 python-dateutil==2.6.1
