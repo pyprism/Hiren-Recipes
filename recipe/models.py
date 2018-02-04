@@ -45,6 +45,7 @@ class Recipe(models.Model):
     )
     meal = models.CharField(max_length=3, choices=meal_type, default='Oth')
     video = models.URLField(null=True, blank=True)
+    site = models.URLField(null=True, blank=True)
     ingredient = models.TextField(null=True, blank=True)
     direction = models.TextField(null=True, blank=True)
     tips = models.TextField(null=True, blank=True)

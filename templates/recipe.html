@@ -28,6 +28,9 @@
     {% if recipe.video %}
     <a href="{{recipe.video}}" target="_blank"><i class="fa fa-file-video-o" aria-hidden="true"></i> Video </a>
     {% endif %}
+    {% if recipe.site %}
+    <a href="{{recipe.site}}" target="_blank"><i class="fa fa-link" aria-hidden="true"></i> Site </a>
+    {% endif %}
     <hr/>
     {% if recipe.ingredient %}
     <h3 class="text-nowrap"><i class="fa fa-list-ul" aria-hidden="true"></i> Ingredients: </h3>

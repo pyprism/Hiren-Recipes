@@ -146,7 +146,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Dhaka'
 
-USE_I18N = True
+USE_I18N = False
 
 USE_L10N = True
 
@@ -277,7 +277,7 @@ CACHEOPS = {
     # This includes request.user or post.author access,
     # where Post.author is a foreign key to auth.User
     'auth.user': {'ops': 'all', 'timeout': 60*60*24*30},
-    '*.*': {'ops': 'all', 'timeout': 60*60*24*30},  # enable cache for all model for 1 month
+    '*.*': {'ops': 'all', 'timeout': 60*60*24*7},  # enable cache for all model for 7 days
 }
 
 # querycount
@@ -286,10 +286,3 @@ QUERYCOUNT = {
     'DISPLAY_DUPLICATES': 5,
 }
 
-# sentry
-RAVEN_CONFIG = {
-    'dsn': JSON_DATA['sentry_dsn'],
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
-}
