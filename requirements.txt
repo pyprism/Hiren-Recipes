@@ -13,7 +13,7 @@ olefile==0.45.1
 packaging==16.8
 pilkit==2.0
 Pillow==5.0.0
-psycopg2==2.7.3
+psycopg2==2.7.3.2
 pyparsing==2.2.0
 python-dateutil==2.6.1
 pytz==2017.3
