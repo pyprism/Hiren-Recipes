@@ -2,7 +2,11 @@
 Description=uWSGI instance to serve Hiren-Recipes
 
 [Service]
-ExecStart=/bin/bash -c 'su prism; cd /home/prism/prod/Hiren-Recipes; source .env/bin/activate; uwsgi --enable-threads --ini hiren.ini'
+ExecStart=/bin/bash -c 'su prism; cd /home/prism/prod/Hiren-Recipes; source .env/bin/activate; uwsgi --enable-threads --memory-report --ini recipes.ini'
+
+ExecReload=/bin/bash -c 'su prism; cd /home/prism/prod/Hiren-Recipes; source .env/bin/activate; uwsgi --reload /run/recipes.pid'
+
+ExecStop=/bin/bash -c 'su prism; cd /home/prism/prod/Hiren-Recipes; source .env/bin/activate; uwsgi --stop /run/recipes.pid'
 
 [Install]
 WantedBy=multi-user.target
