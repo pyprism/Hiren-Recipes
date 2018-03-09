@@ -2,7 +2,7 @@ appdirs==1.4.3
 contextlib2==0.5.5
 Django==2.0.2
 django-appconf==1.0.2
-django-cacheops==4.0.5
+django-cacheops==4.0.6
 django-compressor==2.2
 django-debug-toolbar==1.9.1
 django-imagekit==4.0.2
